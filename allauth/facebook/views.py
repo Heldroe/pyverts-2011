@@ -36,6 +36,7 @@ def login(request):
                     account = FacebookAccount(social_id=social_id)
                 account.link = facebook_me['link']
                 account.name = facebook_me['name']
+                account.token = token
                 if account.pk:
                     account.save()
                 data = dict(email=email,
