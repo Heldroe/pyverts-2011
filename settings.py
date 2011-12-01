@@ -121,7 +121,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'pyverts-django-base.urls'
+ROOT_URLCONF = 'pyverts-2011.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates')
