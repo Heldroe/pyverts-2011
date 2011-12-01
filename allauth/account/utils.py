@@ -13,6 +13,7 @@ from signals import user_logged_in
 
 import app_settings
 
+from achievements.engine import engine
 
 LOGIN_REDIRECT_URLNAME = getattr(settings, "LOGIN_REDIRECT_URLNAME", "")
 
@@ -82,6 +83,7 @@ def complete_signup(request, user, success_url):
         return render_to_response("account/verification_sent.html", ctx)
     else:
         perform_login(request, user)
+        engine.check_achievement(user=request.user, key="facebook_login")
         return HttpResponseRedirect(success_url)
 
 

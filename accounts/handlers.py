@@ -25,5 +25,8 @@ class FacebookLoginAchievement(object):
     description = ugettext("Login with Facebook")
     bonus = 50.0
     def evaluate(self, user, *args, **kwargs):
-        socialaccounts = SocialAccount.objects.get(user=user)
-        return socialaccounts.is_fb_account()
+        try:
+            socialaccounts = SocialAccount.objects.get(user=user)
+            return socialaccounts.is_fb_account()
+        except SocialAccount.DoesNotExist:
+            return False
