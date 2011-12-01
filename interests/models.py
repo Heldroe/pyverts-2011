@@ -1,18 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-def class InterestCategory()
+class InterestCategory(models.Model):
     name = models.CharField(max_length=512)
 
 
-def class Interest(models.Model):
+class Interest(models.Model):
     name = models.CharField(max_length=512)
     fb_id = models.CharField(max_length=64, unique=True)
     category = models.ForeignKey(InterestCategory)
 
 
-def class UserInterests
+class UserInterests(models.Model):
     user = models.ForeignKey(User)
     interest = models.ForeignKey(Interest)
     created = models.DateField()
