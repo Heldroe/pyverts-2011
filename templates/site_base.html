@@ -1,0 +1,94 @@
+{% load i18n %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <title></title>
+        <noscript>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/mobile.min.css" />
+        </noscript>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+        <script>
+            var ADAPT_CONFIG = {
+                // Where is your CSS?
+                path: '{{ STATIC_URL }}css/',
+
+                // false = Only run once, when page first loads.
+                // true = Change on window resize and page tilt.
+                dynamic: true,
+
+                // First range entry is the minimum.
+                // Last range entry is the maximum.
+                // Separate ranges by "to" keyword.
+                range: [
+                    '0px    to 760px  = mobile.min.css',
+                    '760px  to 980px  = 720.min.css',
+                    '980px  to 1280px = 960.min.css',
+                    '1280px to 1600px = 1200.min.css',
+                    '1600px to 1940px = 1560.min.css',
+                    '1940px to 2540px = 1920.min.css',
+                    '2540px           = 2520.min.css'
+                ]
+            };
+        </script>
+        <script src="{{ STATIC_URL }}js/adapt.min.js"></script>
+        <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+    </head>
+    <body lang="fr">
+        <div class="topbar">
+            <div class="fill">
+                <div class="container_12">
+                    <a class="brand" href="{% url home %}">pyverts</a>
+                    <ul class="nav">
+                        {% if homepage %}<li class="active">
+                        {% else %}<li>{% endif %}
+                        <a href="{% url home %}">{% trans "Home" %}</a>
+                        </li>
+                        {% if not user.is_authenticated %}
+                        {% if loginpage %}<li class="active">
+                        {% else %}<li>{% endif %}
+                        <a href="{% url account_login %}">{% trans "Login" %}</a></li>
+                        {% if signuppage %}<li class="active">
+                        {% else %}<li>{% endif %}
+                        <a href="{% url account_signup %}">{% trans "Sign up" %}</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        {% if my_profile %}<li class="active">
+                        {% else %}<li>{% endif %}
+                        <a href="{% url profiles_profile_detail username=user.username %}">{% trans "Profile" %}</a></li>
+                        {% endif %}
+                    </ul>
+                    {% if not user.is_authenticated %}
+                    <form class="pull-right" action="{% url account_login %}" method="post">
+                        {% csrf_token %}
+                        <input class="input span3" name="username" type="text" placeholder="{% trans "Username" %}">
+                        <input class="input-small" name="password" type="password" placeholder="{% trans "Password" %}">
+                        <button class="btn" type="submit">{% trans "Sign in" %}</button>
+                    </form>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <ul class="nav secondary-nav">
+                        <li>
+                            <a href="{% url account_logout %}">{% trans "Log out" %} ({{ user.username }})</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container_12 content">
+            <div class="page-header">
+            {% block pageheader %}
+            {% endblock %}
+            </div>
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
+

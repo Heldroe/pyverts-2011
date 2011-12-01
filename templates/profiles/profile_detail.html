@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load avatar_tags %}
+
+{% block pageheader %}
+{% if my_profile %}
+<h1>{% trans "Your profile" %}</h1>
+{% else %}
+<h1>{{ profile.user }}</h1>
+{% endif %}
+{% endblock %}
+{% block body %}
+<div class="grid_6">
+    <div class="media-grid">
+        <a href="{% avatar_url profile.user %}" title="" style="margin-bottom:5px">
+            <img class="thumbnail" alt="" src="{% avatar_url profile.user 100 %}">
+        </a>
+    </div>
+    {% if my_profile %}
+    <a class="btn" href="{% url avatar_change %}">{% trans "Change avatar" %}</a>
+    <br />
+    <br />
+    {% endif %}
+    <h3>{% trans "Score:" %} {{ achievements_score }}</h3>
+    <dl>
+        <dt>Test1</dt>
+        <dd>
+            {{ profile.test }}
+        </dd>
+        <dt>Test2</dt>
+        <dd>
+            {{ profile.test2 }}
+        </dd>
+    </dl>
+    {% if my_profile %}
+    <a class="btn primary" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
+    {% endif %}
+</div>
+{% endblock %}
+

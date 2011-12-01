@@ -1,0 +1,25 @@
+{% load uni_form_field %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+{#    <div id="div_{{ field.auto_id }}" class="ctrlHolder{% if field.errors %} error{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.field.widget.attrs.class %} {{ field.field.widget.attrs.class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}"> #}
+    <div class="clearfix{% if field.errors|length > 0 %} error{% endif %}">
+        {% if field.label %}
+        <label for="{{ field.auto_id }}" {% if field.field.required %}class="requiredField"{% endif %}>
+            {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+        {% endif %}
+        <div class="input">
+            {{ field|with_class }}
+            <span class="help-inline">
+            {% for error in field.errors %}
+                {{ error }} 
+            {% endfor %}
+            </span>
+            {% if field.help_text %}
+                <span class="help-block">{{ field.help_text|safe }}</span>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

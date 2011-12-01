@@ -1,0 +1,50 @@
+{% extends "site_base.html" %}
+{% load i18n avatar_tags %}
+
+{% block pageheader %}
+<h1>{% trans "Your avatar" %}</h1>
+{% endblock %}
+
+{% block body %}
+<div class="grid_3">
+    <h3>{% trans "Current avatar" %}</h3>
+    <ul class="media-grid">
+        <li>
+            <a href="#">
+            <img class="thumbnail grid_2" src="{% avatar_url user 250 %}" alt="" />
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="grid_9">
+    <h3>{% trans "Your avatars" %}</h3>
+    {% if not avatars %}
+        <p>{% trans "You haven't uploaded an avatar yet. Please upload one now." %}</p>
+    {% else %}
+        <form method="POST" action="{% url avatar_change %}">
+            <ul class="avatar-choice">
+            {% for field in primary_avatar_form %}
+                {% for choice in field.field.choices %}
+                    <label for="choice_{{ choice.0 }}">
+                    {{ choice.1 }}
+                    <input type="radio" name="choice" value="{{ choice.0 }}" id="choice_{{ choice.0 }}" />
+                    </label>
+                {% endfor %}
+            {% endfor %}
+                <div style="clear:both"></div>
+            </ul>
+            {# primary_avatar_form.as_ul #}
+            {% csrf_token %}
+            <button class="btn large primary" type="submit">{% trans "Set avatar" %}</button>
+            <a class="btn large info" title="" href="{% url avatar_delete %}">{% trans "Manage avatars" %}</a>
+        </form>
+    {% endif %}
+    <h3>{% trans "Add an avatar" %}</h3>
+    <form enctype="multipart/form-data" method="POST" action="{% url avatar_add %}">
+        {# upload_avatar_form.as_p #}
+        {{ upload_avatar_form }}
+        {% csrf_token %}
+        <button class="btn success" type="submit">{% trans "Upload" %}</button>
+    </form>
+</div>
+{% endblock %}

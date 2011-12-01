@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+{% load account_tags %}
+
+{% block pageheader %}
+<h1>{% trans "Edit profile" %}</h1>
+{% endblock %}
+
+{% block body %}
+<div class="grid_6">
+    <form method="post" action="{% url profiles_edit_profile %}">
+        {% csrf_token %}
+        {{ form|as_uni_form }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="actions">
+            <button type="submit" class="btn large primary">{% trans "Save" %}</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

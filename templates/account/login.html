@@ -1,0 +1,62 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+{% load account_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block pageheader %}
+<h1>{% trans "Sign In" %}</h1>
+{% endblock %}
+
+
+{% block body %}
+
+{% if not user.is_authenticated %}
+<div class="grid_6">
+    <form class="login uniForm" method="POST" action="{% url account_login %}">
+        {% csrf_token %}
+        {{ form }}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="actions">
+            <button type="submit" class="btn large primary">{% trans "Sign in" %}</button> &nbsp;
+            <a class="btn small info" href="{% url account_signup %}">{% trans "Sign up?" %}</a>
+            <a class="btn small" href="{% url account_reset_password %}">{% trans "Forgot Password?" %}</a>
+        </div>
+    </form>
+</div>
+
+{% if allauth.socialaccount_enabled  %}
+<div class="grid_6">
+<p>
+{% blocktrans %}
+No account? <a href="{{ signup_url }}">Create one</a>.<br />
+You can also log in via one of those websites:
+{% endblocktrans %}
+</p>
+
+<div class="socialaccount_ballot">
+
+<ul class="socialaccount_providers">
+{% include "socialaccount/snippets/provider_list.html" %}
+</ul>
+
+</div>
+</div>
+
+
+{% endif %}
+{% endif %}
+
+    
+{% include "socialaccount/snippets/login_extra.html" %}
+{% if user.is_authenticated %}
+{% include "account/snippets/already_logged_in.html" %}
+{% endif %}
+    
+
+{% endblock %}
+

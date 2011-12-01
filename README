@@ -1,0 +1,22 @@
+Dépendances : 
+ - python >= 2.7.1
+ - django >= 1.3.1
+ - django-allauth : https://github.com/pennersr/django-allauth
+ - django-avatar : https://github.com/ericflo/django-avatar
+ - django-achievements : https://github.com/ssaboum/django-achievements
+ - python-sdk : https://github.com/facebook/python-sdk
+ - Éventuellement python-setuptools
+
+Pour installer django, django-allauth et python-sdk : 
+ - sudo python setup.py install
+
+Pour démarrer :
+ - python manage.py syncdb
+ - python manage.py runserver
+
+Internationalisation : 
+ - Mettre à jour les fichiers de messages : django-admin.py makemessages -a
+ - Compiler les fichiers de messages : django-admin.py compilemessages
+
+Bibliothèques utilisées : 
+ - Bootstrap : http://twitter.github.com/bootstrap/

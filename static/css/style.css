@@ -1,0 +1,47 @@
+html, body {
+    background-color: #EEEEEE;
+}
+
+body {
+    padding-top: 40px;
+}
+
+.page-header {
+    background-color: #F5F5F5;
+    padding: 20px 20px 10px;
+}
+
+.content {
+    background-color: #FFFFFF;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+}
+
+img.grid_1, img.grid_2, img.grid_3, img.grid_4, img.grid_5, img.grid_6, img.grid_7, img.grid_8, img.grid_9, img.grid_10, img.grid_11, img.grid_12 {
+    margin: 0;
+}
+
+ul.avatar-choice label {
+    margin: 0 10px 10px 0;
+    display: block;
+    text-align: center;
+    height: 110px;
+    width: 100px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+ul.avatar-choice label:hover {
+    border-color: #0069D6;
+    box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+
+ul.avatar-choice label img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
