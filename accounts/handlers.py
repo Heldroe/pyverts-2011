@@ -5,6 +5,7 @@
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from avatar.views import _get_avatars
+from allauth.socialaccount.models import SocialAccount
 
 class UploadAvatarAchievement(object):
     name = ugettext("Avatar Uploader")
@@ -17,3 +18,12 @@ class UploadAvatarAchievement(object):
             return True
         else:
             return False
+
+class FacebookLoginAchievement(object):
+    name = ugettext("Facebooker")
+    key = "facebook_login"
+    description = ugettext("Login with Facebook")
+    bonus = 50.0
+    def evaluate(self, user, *args, **kwargs):
+        socialaccounts = SocialAccount.objects.get(user=user)
+        return socialaccounts.is_fb_account()

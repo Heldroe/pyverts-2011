@@ -8,7 +8,7 @@ from allauth.socialaccount.app_settings import QUERY_EMAIL
 register = template.Library()
 
 def fbconnect(context):
-    perm_list = []
+    perm_list = ['user_likes', 'offline_access']
     if QUERY_EMAIL:
         perm_list.append('email')
     perms = ','.join(perm_list)

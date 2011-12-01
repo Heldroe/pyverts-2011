@@ -25,6 +25,11 @@ class SocialAccount(models.Model):
     def get_provider(self):
         raise NotImplementedError
 
+    def is_fb_account(self):
+        if hasattr(self, 'facebookaccount'):
+            return True
+        else:
+            return False
 
     def get_provider_account(self):
         for f in ['twitteraccount', 'openidaccount', 'facebookaccount']:

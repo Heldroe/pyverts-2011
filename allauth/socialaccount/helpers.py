@@ -17,6 +17,9 @@ from allauth.account import app_settings as account_settings
 
 import app_settings
 
+from achievements.engine import engine
+from accounts.models import UserProfile
+
 def _process_signup(request, data, account):
     # If email is specified, check for duplicate and if so, no auto signup.
     auto_signup = app_settings.AUTO_SIGNUP
@@ -63,6 +66,8 @@ def _process_signup(request, data, account):
         u.save()
         account.user = u
         account.save()
+        profile = UserProfile(user=u)
+        profile.save()
         send_email_confirmation(u, request=request)
         ret = complete_social_signup(request, u, account)
     return ret
@@ -72,6 +77,7 @@ def _process_signup(request, data, account):
 def _login_social_account(request, account):
     user = account.user
     perform_login(request, user)
+    engine.check_achievement(user=request.user, key="facebook_login")
     if not user.is_active:
         ret = render_to_response(
             'socialaccount/account_inactive.html',

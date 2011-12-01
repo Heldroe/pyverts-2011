@@ -25,6 +25,7 @@ class FacebookApp(models.Model):
 class FacebookAccount(SocialAccount):
     social_id = models.CharField(max_length=255, blank=False, unique=True)
     name = models.CharField(max_length=255)
+    token = models.CharField(max_length=512)
     link = models.URLField()
 
     def get_profile_url(self):

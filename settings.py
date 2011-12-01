@@ -143,7 +143,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
 #    'allauth.twitter',
     'allauth.openid',
-#    'allauth.facebook',
+    'allauth.facebook',
     'profiles',
     'accounts',
     'bootstrap',
