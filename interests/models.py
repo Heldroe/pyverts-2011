@@ -6,7 +6,7 @@ def class InterestCategory()
     name = models.CharField(max_length=512)
 
 
-def class Interests(models.Model):
+def class Interest(models.Model):
     name = models.CharField(max_length=512)
     fb_id = models.CharField(max_length=64, unique=True)
     category = models.ForeignKey(InterestCategory)
