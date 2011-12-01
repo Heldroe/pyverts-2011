@@ -10,8 +10,8 @@
     <h3>{% trans "Current avatar" %}</h3>
     <ul class="media-grid">
         <li>
-            <a href="#">
-            <img class="thumbnail grid_2" src="{% avatar_url user 250 %}" alt="" />
+            <a href="#" title="{% trans "your avatar" %}">
+            <img class="thumbnail grid_2" src="{% avatar_url user 250 %}" alt={% trans "avatar" %}/>
             </a>
         </li>
     </ul>
@@ -27,7 +27,7 @@
                 {% for choice in field.field.choices %}
                     <label for="choice_{{ choice.0 }}">
                     {{ choice.1 }}
-                    <input type="radio" name="choice" value="{{ choice.0 }}" id="choice_{{ choice.0 }}" />
+                    <input type="radio" title="{% trans "to select this avatar" %}" name="choice" value="{{ choice.0 }}" id="choice_{{ choice.0 }}" />
                     </label>
                 {% endfor %}
             {% endfor %}
@@ -35,8 +35,8 @@
             </ul>
             {# primary_avatar_form.as_ul #}
             {% csrf_token %}
-            <button class="btn large primary" type="submit">{% trans "Set avatar" %}</button>
-            <a class="btn large info" title="" href="{% url avatar_delete %}">{% trans "Manage avatars" %}</a>
+            <button class="btn large primary" type="submit" title="{% trans "to set the selected avatar your avatar" %}">{% trans "Set avatar" %}</button>
+            <a class="btn large info" title="{% trans "to modify an avatar" %}" href="{% url avatar_delete %}">{% trans "Manage avatars" %}</a>
         </form>
     {% endif %}
     <h3>{% trans "Add an avatar" %}</h3>
@@ -44,7 +44,7 @@
         {# upload_avatar_form.as_p #}
         {{ upload_avatar_form }}
         {% csrf_token %}
-        <button class="btn success" type="submit">{% trans "Upload" %}</button>
+        <button class="btn success" title="{% trans "Upload a new avatar" %}" type="submit">{% trans "Upload" %}</button>
     </form>
 </div>
 {% endblock %}

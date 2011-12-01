@@ -13,12 +13,12 @@
 {% block body %}
 <div class="grid_6">
     <div class="media-grid">
-        <a href="{% avatar_url profile.user %}" title="" style="margin-bottom:5px">
-            <img class="thumbnail" alt="" src="{% avatar_url profile.user 100 %}">
+        <a href="{% avatar_url profile.user %}" title="avatar" style="margin-bottom:5px">
+            <img class="thumbnail" alt="avatar" src="{% avatar_url profile.user 100 %}">
         </a>
     </div>
     {% if my_profile %}
-    <a class="btn" href="{% url avatar_change %}">{% trans "Change avatar" %}</a>
+    <a class="btn" title="{% trans "link to modify your avatar" %}" href="{% url avatar_change %}">{% trans "Change avatar" %}</a>
     <br />
     <br />
     {% endif %}
@@ -34,7 +34,7 @@
         </dd>
     </dl>
     {% if my_profile %}
-    <a class="btn primary" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
+    <a class="btn primary" title="{% trans "link to modify your profile" %}" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
     {% endif %}
 </div>
 {% endblock %}

@@ -22,9 +22,9 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <div class="actions">
-            <button type="submit" class="btn large primary">{% trans "Sign in" %}</button> &nbsp;
-            <a class="btn small info" href="{% url account_signup %}">{% trans "Sign up?" %}</a>
-            <a class="btn small" href="{% url account_reset_password %}">{% trans "Forgot Password?" %}</a>
+            <button type="submit" class="btn large primary" title="{% trans "validate your connect form" %}">{% trans "Sign in" %}</button> &nbsp;
+            <a class="btn small info" href="{% url account_signup %}" title="{% trans " web page to create a new account" %}">{% trans "Sign up?" %}</a>
+            <a class="btn small" href="{% url account_reset_password %}" title="{% trans " link to reset your password" %}">{% trans "Forgot Password?" %}</a>
         </div>
     </form>
 </div>
@@ -33,7 +33,7 @@
 <div class="grid_6">
 <p>
 {% blocktrans %}
-No account? <a href="{{ signup_url }}">Create one</a>.<br />
+No account? <a href="{{ signup_url }}" title="to create a new account" >Create one</a>.<br />
 You can also log in via one of those websites:
 {% endblocktrans %}
 </p>

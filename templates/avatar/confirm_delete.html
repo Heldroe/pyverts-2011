@@ -25,7 +25,7 @@
             </ul>
             <div style="clear:both"></div>
             {% csrf_token %}
-            <button class="btn danger large" type="submit">{% trans "Delete these avatars" %}</button>
+            <button class="btn danger large" type="submit" title="{% trans "Delete the selected avatars" %}">{% trans "Delete these avatars" %}</button>
         </form>
     {% endif %}
 </div>

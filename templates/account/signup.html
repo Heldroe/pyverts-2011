@@ -4,7 +4,7 @@
 {% load uni_form_tags %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
+   
 {% block pageheader %}
 <h1>{% trans "Sign Up" %}</h1>
 {% endblock %}
@@ -14,7 +14,7 @@
 {% include "account/snippets/already_logged_in.html" %}
     {% else %}
     <div class="grid_6">
-        <p>{% trans "Already have an account?" %} <a href="{{ login_url }}">{% trans "Sign in" %}</a>.</p>
+        <p>{% trans "Already have an account?" %} <a href="{{ login_url }}" title="{% trans "to go to the connect form" %}">{% trans "Sign in" %}</a>.</p>
         
         <form class="signup uniForm" id="signup_form" method="post" action="{% url account_signup %}">
             {% csrf_token %}
@@ -23,7 +23,7 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <div class="actions">
-                <button type="submit" class="btn large primary">{% trans "Sign up" %}</button>
+                <button title="{% trans "validate your new account" %}" type="submit" class="btn large primary">{% trans "Sign up" %}</button>
             </div>
         </form>
     </div>
