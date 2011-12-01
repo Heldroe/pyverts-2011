@@ -5,6 +5,7 @@ Dépendances :
  - django-avatar : https://github.com/ericflo/django-avatar
  - django-achievements : https://github.com/ssaboum/django-achievements
  - python-sdk : https://github.com/facebook/python-sdk
+ - python-imaging
  - Éventuellement python-setuptools
 
 Pour installer django, django-allauth et python-sdk : 

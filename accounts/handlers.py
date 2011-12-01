@@ -1,3 +1,7 @@
+# Copyright (C) 2011 David Guerrero
+# This file is distributed under the license terms of the LICENSE file.
+# David Guerrero <dguerrer@polytch.unice.fr>, 2011.
+
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from avatar.views import _get_avatars

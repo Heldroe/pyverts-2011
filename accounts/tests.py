@@ -1,3 +1,8 @@
+# Test file.
+# Copyright (C) 2011 David Guerrero
+# This file is distributed under the license terms of the LICENSE file.
+# David Guerrero <dguerrer@polytch.unice.fr>, 2011.
+
 """
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".

@@ -43,24 +43,24 @@
         <div class="topbar">
             <div class="fill">
                 <div class="container_12">
-                    <a class="brand" href="{% url home %}">pyverts</a>
+                    <a class="brand" href="{% url home %}" title="{% trans "to go to the home page" %}">pyverts</a>
                     <ul class="nav">
                         {% if homepage %}<li class="active">
                         {% else %}<li>{% endif %}
-                        <a href="{% url home %}">{% trans "Home" %}</a>
+                        <a href="{% url home %}" title="{% trans "to go to the home page" %}">{% trans "Home" %}</a>
                         </li>
                         {% if not user.is_authenticated %}
                         {% if loginpage %}<li class="active">
                         {% else %}<li>{% endif %}
-                        <a href="{% url account_login %}">{% trans "Login" %}</a></li>
+                        <a href="{% url account_login %}" title="{% trans "login to your account" %}">{% trans "Login" %}</a></li>
                         {% if signuppage %}<li class="active">
                         {% else %}<li>{% endif %}
-                        <a href="{% url account_signup %}">{% trans "Sign up" %}</a></li>
+                        <a href="{% url account_signup %}" title="{% trans "sign up to our site" %}">{% trans "Sign up" %}</a></li>
                         {% endif %}
                         {% if user.is_authenticated %}
                         {% if my_profile %}<li class="active">
                         {% else %}<li>{% endif %}
-                        <a href="{% url profiles_profile_detail username=user.username %}">{% trans "Profile" %}</a></li>
+                        <a href="{% url profiles_profile_detail username=user.username %}" title="{% trans "to go to your profile" %}">{% trans "Profile" %}</a></li>
                         {% endif %}
                     </ul>
                     {% if not user.is_authenticated %}
@@ -68,13 +68,13 @@
                         {% csrf_token %}
                         <input class="input span3" name="username" type="text" placeholder="{% trans "Username" %}">
                         <input class="input-small" name="password" type="password" placeholder="{% trans "Password" %}">
-                        <button class="btn" type="submit">{% trans "Sign in" %}</button>
+                        <button class="btn" type="submit" title="{% trans "login" %}">{% trans "Sign in" %}</button>
                     </form>
                     {% endif %}
                     {% if user.is_authenticated %}
                     <ul class="nav secondary-nav">
                         <li>
-                            <a href="{% url account_logout %}">{% trans "Log out" %} ({{ user.username }})</a>
+                            <a title="{% trans "to log out" %}" href="{% url account_logout %}">{% trans "Log out" %} ({{ user.username }})</a>
                         </li>
                     </ul>
                     {% endif %}
