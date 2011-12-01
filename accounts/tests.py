@@ -1,3 +1,6 @@
+# Author: David Guerrero
+# Licenced under the terms of the AGPLv3. See LICENCE file for more information.
+
 """
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
