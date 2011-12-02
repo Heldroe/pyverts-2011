@@ -6,6 +6,8 @@ admin.autodiscover()
 
 from django.conf import settings
 
+from django.views.generic.simple import redirect_to
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url('', include('allauth.urls')),
@@ -17,7 +19,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'tutorial.views.home', name='home'),
     # url(r'^tutorial/', include('tutorial.foo.urls')),
-
+	url(r'robots.txt', redirect_to,  {'url': 'static/robots.txt'}),
+	url(r'sitemap.xml', redirect_to,  {'url': 'static/sitemap.xml'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
