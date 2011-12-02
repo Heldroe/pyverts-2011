@@ -1,7 +1,9 @@
 html, body {
     background-color: #EEEEEE;
 }
-
+.blind{
+    display:none;
+}
 body {
     padding-top: 40px;
 }
