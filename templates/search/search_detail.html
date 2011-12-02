@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+<div class="grid_6">
+    
+    <ul>
+        <h4>Résultats</h4>
+        {% for l in list %}
+        <li>
+            <a href="../../profile/{{ l }}/" >{{ l }}</a>
+        </li>
+        {% endfor %}
+        
+    </ul>
+</div>
+{% endblock %}
+
