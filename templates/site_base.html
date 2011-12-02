@@ -2,12 +2,15 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="cadeaux, amis, web, réseau, social, facebook, anniversaire, famille" />
+        <meta name="description" content="Système de recommandation de cadeaux pour vos amis et votre famille" />
+        <meta name="robots" content="index,follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <title></title>
+        <title>{% block head_title %}{% endblock %}</title>
         <noscript>
         <link rel="stylesheet" href="{{ STATIC_URL }}css/mobile.min.css" />
         </noscript>
@@ -93,7 +96,21 @@
             </div>
             {% block body %}
             {% endblock %}
-	    <div class="page-footer">
+	    <div class="page-footer"><!--
+<a href="http://www.w3.org/html/logo/">
+<img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+</a>-->
+<a href="http://www.w3.org/WAI/WCAG1AAA-Conformance"
+      title="Explanation of Level Triple-A Conformance">
+  <img height="32" width="88" 
+          src="http://www.w3.org/WAI/wcag1AAA"
+          alt="Level Triple-A conformance icon, 
+          W3C-WAI Web Content Accessibility Guidelines 1.0"></a>
+    <!--<a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>-->
 	    </div>
         </div>
     </body>

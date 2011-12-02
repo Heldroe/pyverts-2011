@@ -47,3 +47,18 @@ ul.avatar-choice label img {
     margin-left: auto;
     margin-right: auto;
 }
+
+.categorybar_full {
+    display: block;
+    height: 20px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.categorybar_progress {
+    height: 20px;
+    background-color: #339BB9;
+    border-radius: 4px 4px 4px 4px;
+    text-indent: -9000px;
+}

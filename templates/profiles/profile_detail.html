@@ -23,7 +23,9 @@
     <br />
     {% endif %}
     <h3>{% trans "Score:" %} {{ achievements_score }}</h3>
-    <dl>
+    {% if my_profile %}
+    <a class="btn primary" title="{% trans "link to modify your profile" %}" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
+    {% endif %}
 <!--        <dt>Test1</dt>
         <dd>
             {{ profile.test }}
@@ -32,18 +34,33 @@
         <dd>
             {{ profile.test2 }}
         </dd>-->
-        <dt>Intérêts</dt>
-        {% for interest in interests %}
-        <dd>
-            {{ interest.name }} ({{ interest.category.name }})
-        </dd>
-        {% endfor %}
-        
-        
-    </dl>
-    {% if my_profile %}
-    <a class="btn primary" title="{% trans "link to modify your profile" %}" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
-    {% endif %}
+</div>
+<div class="grid_6">
+    <h3>{% trans "Last likes" %}</h3>
+    <ul class="media-grid">
+    {% for interest in last_interests %}
+    <li>
+    <a href="#">
+    <img src="https://graph.facebook.com/{{ interest.fb_id }}/picture" alt="{{ interest.name }}" />
+    </a>
+    </li>
+    {% endfor %}
+    </ul>
+    <h3>{% trans "Interests" %}</h3>
+    <ul>
+    {% for key,value in scores_by_category %}
+        {% if value > 0 %}
+        <li>
+        {{ key }}
+        <div class="categorybar_full">
+            <div class="categorybar_progress" style="width:{{ value }}%">
+                {{ value }}/100
+            </div>
+        </div>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul> 
 </div>
 {% endblock %}
 
