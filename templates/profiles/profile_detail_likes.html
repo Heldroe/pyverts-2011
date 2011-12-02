@@ -1,0 +1,34 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load avatar_tags %}
+
+{% block pageheader %}
+{% if my_profile %}
+<h1>{% trans "What you like" %}</h1>
+{% else %}
+<h1>What {{ profile.user }} likes</h1>
+{% endif %}
+{% endblock %}
+{% block body %}
+<div class="grid_12" style="margin-left:30px">
+    <div class="media-grid">
+    <a class="btn large info" title="Return to profile" href="..">Return to profile</a>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <ul class="media-grid">
+    {% for interest in last_interests %}
+    <li>
+    <a href="{% url interest_view interest.fb_id %}" title="{{ interest.name }}">
+    <img src="https://graph.facebook.com/{{ interest.fb_id }}/picture" alt="{{ interest.name }}" />
+    </a>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+

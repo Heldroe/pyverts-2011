@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load avatar_tags %}
+
+{% block pageheader %}
+<h1>{{ fb_name }}</h1>
+{% endblock %}
+{% block body %}
+<div class="grid_12">
+<h2>{% trans "Shopping suggestions" %}</h2>
+<ul class="shopping_items">
+{% for item in items %}
+<li class="shopping_item">
+{% for key,value in item.items %}
+
+
+{% if key == "name" %}
+<span class="shopping_item_title">{{ value }}</span>
+{% endif %}
+
+{% if key == "price" %}
+<span class="shopping_item_price">{{ value }} €</span>
+{% endif %}
+
+{% if key == "image" %}
+<img class="shopping_item_image" src="{{ value }}" alt="Visualisation du produit" />
+{% endif %}
+
+{% if key == "url" %}
+<span class="shopping_item_buy">
+<a title="Acheter" class="btn large primary" href="{{ value }}">Acheter</a>
+</span>
+{% endif %}
+
+{% endfor %}
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
+

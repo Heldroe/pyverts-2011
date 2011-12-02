@@ -314,3 +314,45 @@ def profile_list(request):
         return redirect('profiles_profile_detail', username=request.user.username)
     else:
         return redirect('account_login')
+
+def profile_detail_likes(request, username, public_profile_field=None,
+                   template_name='profiles/profile_detail_likes.html',
+                   extra_context=None):
+    user = get_object_or_404(User, username=username)
+    try:
+        profile_obj = user.get_profile()
+    except ObjectDoesNotExist:
+        raise Http404
+    if public_profile_field is not None and \
+       not getattr(profile_obj, public_profile_field):
+        profile_obj = None
+    
+    if extra_context is None:
+        extra_context = {}
+    context = RequestContext(request)
+    for key, value in extra_context.items():
+        context[key] = callable(value) and value() or value
+
+    my_profile = False
+    if request.user.is_authenticated():
+        my_profile = (request.user == user)
+    
+    interests = []
+    userinterests = UserInterests.objects.filter(user=user)
+    for userinterest in userinterests:
+        interests.append(userinterest.interest)
+
+    scoresby = get_score_by_category(user)
+    scoresby_sorted = sorted(scoresby.iteritems(), key=operator.itemgetter(1))
+    scoresby_sorted.reverse()
+
+    return render_to_response(template_name,
+                              { 'profile': profile_obj,
+                                'profilepage': True,
+                                'my_profile': my_profile,
+                                'achievements_score': get_user_score(user),
+                                'interests': interests,
+                                'last_interests': interests,
+                                'scores_by_category': scoresby_sorted},
+                              context_instance=context)
+

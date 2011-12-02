@@ -40,12 +40,16 @@
     <ul class="media-grid">
     {% for interest in last_interests %}
     <li>
-    <a href="#">
+    <a href="{% url interest_view interest.fb_id %}" title="{{ interest.name }}">
     <img src="https://graph.facebook.com/{{ interest.fb_id }}/picture" alt="{{ interest.name }}" />
     </a>
     </li>
     {% endfor %}
     </ul>
+    <a class="btn large info" href="likes/" title="See all">See all</a>
+    <br />
+    <br />
+    <br />
     <h3>{% trans "Interests" %}</h3>
     <ul>
     {% for key,value in scores_by_category %}

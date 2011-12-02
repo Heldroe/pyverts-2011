@@ -23,6 +23,7 @@ urlpatterns = patterns('',
 	url(r'sitemap.xml', redirect_to,  {'url': 'static/sitemap.xml'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^interest/',include('interests.urls')),
 )
 
 if settings.DEBUG:

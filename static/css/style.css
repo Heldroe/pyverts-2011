@@ -62,3 +62,48 @@ ul.avatar-choice label img {
     border-radius: 4px 4px 4px 4px;
     text-indent: -9000px;
 }
+
+.shopping_item {
+    position: relative;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    display: block;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    height: 200px;
+}
+
+.shopping_item_image {
+    width: 120px;
+    height: 120px;
+    float: left;
+    margin-top: 30px;
+}
+
+.shopping_item_title {
+    display: block;
+    font-weight: bold; 
+    font-size: 20px;
+    height: 30px;
+    color: black;
+}
+
+.shopping_item_price {
+    display: block;
+    float: right;
+    width: 150px;
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    margin-top: 45px;
+}
+
+.shopping_item_buy {
+    position: absolute;
+    display: block;
+    float: right;
+    top: 150px;
+    left: 200px;
+}
