@@ -305,6 +305,7 @@ def profile_detail(request, username, public_profile_field=None,
                                 'my_profile': my_profile,
                                 'achievements_score': get_user_score(user),
                                 'interests': interests,
+                                'last_interests': interests[:20],
                                 'scores_by_category': scoresby_sorted},
                               context_instance=context)
 

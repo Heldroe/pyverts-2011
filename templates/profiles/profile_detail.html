@@ -36,6 +36,16 @@
         </dd>-->
 </div>
 <div class="grid_6">
+    <h3>{% trans "Last likes" %}</h3>
+    <ul class="media-grid">
+    {% for interest in last_interests %}
+    <li>
+    <a href="#">
+    <img src="https://graph.facebook.com/{{ interest.fb_id }}/picture" alt="{{ interest.name }}" />
+    </a>
+    </li>
+    {% endfor %}
+    </ul>
     <h3>{% trans "Interests" %}</h3>
     <ul>
     {% for key,value in scores_by_category %}
