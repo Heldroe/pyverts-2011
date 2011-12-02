@@ -1,11 +1,31 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block pageheader %}
-<h1>{% trans "pyverts-django-base" %}</h1>
+<h1>Bienvenue sur Gift Them All</h1>
 {% endblock %}
 
 {% block body %}
 <div class="grid_12">
-<h3>Welcome to {% trans "pyverts-django-base" %}</h3>
+<h1>Comment ça marche ?</h1>
+</div>
+<div class="grid_6">
+<h2>1. Connectez-vous avec Facebook</h2>
+<img src="{{ STATIC_URL }}importfb.png" />
+</div>
+<div class="grid_6">
+<h2>2. Votre profil est généré automatiquement</h2>
+<img src="{{ STATIC_URL }}fbimport.png" />
+</div>
+<div class="grid_6">
+<h2>3. Vos préférences sont calculées et mises à disposition</h2>
+<img src="{{ STATIC_URL }}genstats.png" />
+</div>
+<div class="grid_6">
+<h2>4. Vos amis profitent de vos préférences pour avoir des recommandations de cadeaux</h2>
+<img src="{{ STATIC_URL }}theybuy.png" />
+</div>
+<div class="grid_6">
+<h2>6. Vous vous faites offrir les cadeaux qui vous correspondent</h2>
+<img src="{{ STATIC_URL }}rich.png" />
 </div>
 {% endblock %}
