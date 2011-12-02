@@ -148,7 +148,8 @@ INSTALLED_APPS = (
     'accounts',
     'bootstrap',
     'avatar',
-    'achievements'
+    'achievements',
+    'interests'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
