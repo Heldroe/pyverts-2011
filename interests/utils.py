@@ -44,6 +44,19 @@ def sync_user_fb_interests(user):
         else:
             user_interest = user_interests[0]
         user_interest.created = like_datecreation
-
         user_interest.save()
 
+def get_score_by_category(user):
+    userinterests = UserInterests.objects.filter(user=user)
+    scores = {}
+    percent = {}
+    cat_nbr = 0
+    for userinterest in userinterests:
+        cat = userinterest.interest.category.name
+        if not scores.has_key(cat):
+            scores[cat] = 1
+        else:
+            scores[cat] += 1
+    for category in scores.keys():
+        percent[category] = int(100*float(scores[category]) / float(len(userinterests)))
+    return percent

@@ -17,8 +17,11 @@ from django.views.generic.list_detail import object_list
 
 from profiles import utils
 from interests.models import UserInterests
+from interests.utils import get_score_by_category
 
 from achievements.utils import get_user_score
+
+import operator
 
 def create_profile(request, form_class=None, success_url=None,
                    template_name='profiles/create_profile.html',
@@ -292,12 +295,17 @@ def profile_detail(request, username, public_profile_field=None,
     for userinterest in userinterests:
         interests.append(userinterest.interest)
 
+    scoresby = get_score_by_category(user)
+    scoresby_sorted = sorted(scoresby.iteritems(), key=operator.itemgetter(1))
+    scoresby_sorted.reverse()
+
     return render_to_response(template_name,
                               { 'profile': profile_obj,
                                 'profilepage': True,
                                 'my_profile': my_profile,
                                 'achievements_score': get_user_score(user),
-                                'interests': interests},
+                                'interests': interests,
+                                'scores_by_category': scoresby_sorted},
                               context_instance=context)
 
 def profile_list(request):
