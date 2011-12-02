@@ -32,10 +32,10 @@
         <dd>
             {{ profile.test2 }}
         </dd>
-        <dt>Intérêts</dt>
         {% for interest in interests %}
+        <dt>Intérêts</dt>
         <dd>
-            {{ interest.name }} ({{ interest.category.name }})
+            {{ interest.name }}
         </dd>
         {% endfor %}
         

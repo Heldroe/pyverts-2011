@@ -6,6 +6,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 from avatar.views import _get_avatars
 from allauth.socialaccount.models import SocialAccount
+from interests.utils import sync_user_fb_interests
 
 class UploadAvatarAchievement(object):
     name = ugettext("Avatar Uploader")
@@ -27,6 +28,8 @@ class FacebookLoginAchievement(object):
     def evaluate(self, user, *args, **kwargs):
         try:
             socialaccounts = SocialAccount.objects.get(user=user)
+            if socialaccounts.is_fb_account():
+                sync_user_fb_interests(user)
             return socialaccounts.is_fb_account()
         except SocialAccount.DoesNotExist:
             return False

@@ -119,7 +119,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
 )
 
 ROOT_URLCONF = 'pyverts-2011.urls'
@@ -149,7 +148,7 @@ INSTALLED_APPS = (
     'accounts',
     'bootstrap',
     'avatar',
-    'achievements',
+    'achievements'
     'interests'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
