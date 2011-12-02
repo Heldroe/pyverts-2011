@@ -22,9 +22,11 @@
     <br />
     <br />
     {% endif %}
-    <h3>{% trans "Score:" %} {{ achievements_score }}</h3>
+    <h3>{% trans "Achievement score:" %} {{ achievements_score }}</h3>
     {% if my_profile %}
-    <a class="btn primary" title="{% trans "link to modify your profile" %}" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a>
+    <h4>Attention : vous disposez d'un profile invité, vous pouvez uniquement visualiser d'autres profils et non completer le votre.</h4>
+    <h4>Pour avoir un profil complet, connectez-vous avec Facebook.</h4>
+<!--     <a class="btn primary" title="{% trans "link to modify your profile" %}" href="{% url profiles_edit_profile %}" style="margin-bottom:10px">{% trans "Edit profile" %}</a> -->
     {% endif %}
 <!--        <dt>Test1</dt>
         <dd>

@@ -65,7 +65,8 @@
                         {% if my_profile %}<li class="active">
                         {% else %}<li>{% endif %}
                         <a href="{% url profiles_profile_detail username=user.username %}" title="{% trans "to go to your profile" %}">{% trans "Profile" %}</a></li>
-                        <li>
+                        {% if searchpage %}<li class="active">
+                        {% else %}<li>{% endif %}
                          <a href="{% url search %}" title="search">Recherche</a>
                          </li>
                         {% endif %}

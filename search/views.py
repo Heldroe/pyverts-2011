@@ -20,7 +20,7 @@ def search(request):
         form = SearchForm()
 
     return render_to_response('search/search.html',
-            {'form': form},
+            {'form': form, 'searchpage': True},
             context_instance=RequestContext(request))
 
 def search_detail(request, term):

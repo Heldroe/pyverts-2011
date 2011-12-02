@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-
-
+{% load uni_form_tags %}
 {% block body %}
 <div class="grid_6">
     <form method="post" action="/search/search_detail/">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|as_uni_form }}
         <div class="actions">
             <button type="submit" class="btn large primary">Chercher</button>
         </div>
