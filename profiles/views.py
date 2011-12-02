@@ -287,12 +287,17 @@ def profile_detail(request, username, public_profile_field=None,
     if request.user.is_authenticated():
         my_profile = (request.user == user)
     
+    interests = []
+    userinterests = UserInterests.objects.filter(user=user)
+    for userinterest in userinterests:
+        interests.append(userinterest.interest)
+
     return render_to_response(template_name,
                               { 'profile': profile_obj,
                                 'profilepage': True,
                                 'my_profile': my_profile,
                                 'achievements_score': get_user_score(user),
-                                'interests': UserInterests.objects.filter(user=user)},
+                                'interests': interests},
                               context_instance=context)
 
 def profile_list(request):
