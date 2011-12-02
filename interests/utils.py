@@ -73,18 +73,22 @@ def get_products_from_interest(interest):
     query = quote_plus(strip_accents(interest.name))
     json_content = urlopen('https://www.googleapis.com/shopping/search/v1/public/products?key=AIzaSyBBdJ5h1V0q3sAZq339bF389HG0t7u_QV8&country=FR&q='+query+'&alt=json').read()
     json_data = json.loads(json_content)
-    items = json_data['items']
-    for item in items:
-        try:
-            my_item = {}
-            my_item['name'] = item['product']['title']
-            my_item['description'] = item['product']['description']
-            my_item['url'] = item['product']['link']
-            my_item['price'] = item['product']['inventories'][0]['price']
-            my_item['shipping'] = item['product']['inventories'][0]['shipping']
-            my_item['currency'] = item['product']['inventories'][0]['currency']
-            my_item['image'] = item['product']['images'][0]['link']
-            end_items.append(my_item)
-        except KeyError:
-            pass
+    try:
+        items = json_data['items']
+        for item in items:
+            try:
+                my_item = {}
+                my_item['name'] = item['product']['title']
+                my_item['description'] = item['product']['description']
+                my_item['url'] = item['product']['link']
+                my_item['price'] = item['product']['inventories'][0]['price']
+                my_item['shipping'] = item['product']['inventories'][0]['shipping']
+                my_item['currency'] = item['product']['inventories'][0]['currency']
+                my_item['image'] = item['product']['images'][0]['link']
+                end_items.append(my_item)
+            except KeyError:
+                pass
+        return end_items
+    except KeyError:
+        pass
     return end_items
